@@ -14,7 +14,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro/>}/>
         <Route path="/novochamado" element={<NovoChamado/>}/>
         <Route path="/chamados" element={<Chamados/>}/>
-        <Route path="/atendimento/:id" element={<Atendimento/>}/>
+        <Route path="/chamado/:id" element={<Atendimento/>}/>
       </Routes>
     </BrowserRouter>
   )
