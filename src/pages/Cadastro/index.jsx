@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { useRef } from "react"
 import api from "../../services/api"
+import { SiHelpscout } from "react-icons/si";
+
 
 function Cadastro(){
     const nomeRef = useRef()
@@ -29,7 +31,11 @@ function Cadastro(){
 
     return (
         <div className="max-w-md mt-10 mx-auto bg-white p-8 border-gray-300 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Cadastro</h2>
+            <h1 className="font-bold mb-6 flex gap-1 justify-center items-center text-3xl">
+                <SiHelpscout className="text-red-600"/>
+                Sistema de chamados
+            </h1>
+            <h2 className="text-xl font-bold mb-6 text-center text-gray-800">Cadastro</h2>
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                 <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Nome" type="text" ref={nomeRef}/>
 

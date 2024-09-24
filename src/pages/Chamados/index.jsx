@@ -20,7 +20,7 @@ function Chamados(){
     return (
         <div className="flex flex-col items-center">
             <Header/>
-            <div className="w-8/12 max-md:w-10/12 p-5 rounded-lg bg-gray-800 flex items-center flex-col gap-5">
+            <div className="w-6/12 max-md:w-10/12 p-5 rounded-lg bg-gray-800 flex items-center flex-col gap-5">
                 <h1 className="font-bold  text-white text-xl">Chamados realizados</h1>
                 
                 {/*{chamados && chamados.length > 0 && chamados.map( chamado => ())}
