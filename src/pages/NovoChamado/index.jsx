@@ -1,16 +1,29 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import Header from "../../components/Header"
+import api from "../../services/api"
 
 function NovoChamado(){
-
     const assuntoRef = useRef()
     const categoriaRef = useRef()
     const descricaoRef = useRef()
+    const idUsuario = localStorage.getItem('id')
+    const navigate = useNavigate()
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
-        alert('teste')
+        try {
+            await api.post('/chamados',{
+                "assunto": assuntoRef.current.value,
+                "tipo": categoriaRef.current.value,
+                "descricao": descricaoRef.current.value,
+                "usuarioId": idUsuario
+            })
+            navigate('/chamados')
+        } catch (error){
+            alert('erro ao criar o chamado')
+            console.log(error)
+        }
     }
 
     return (

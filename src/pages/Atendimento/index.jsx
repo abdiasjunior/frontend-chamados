@@ -48,14 +48,7 @@ function Atendimento(){
                 <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                     <div className="flex gap-3 max-md:flex-col">
                         <input disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Assunto" type="text" value={chamado.assunto}/>
-                        <select disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" value="Dúvida">
-                            <option>Selecione uma categoria</option>
-                            <option value="Solicitação">Solicitação</option>
-                            <option value="Dúvida">Dúvida</option>
-                            <option value="Reclamação">Reclamação</option>
-                            <option value="Informação">Informação</option>
-                            <option value="Sugestão">Sugestão</option>
-                        </select>
+                        <input disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" value="Dúvida"/>
                     </div>
                     <textarea disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Descrição" value={chamado.descricao}/>
 

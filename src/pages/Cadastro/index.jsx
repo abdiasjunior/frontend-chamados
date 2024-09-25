@@ -15,16 +15,18 @@ function Cadastro(){
         e.preventDefault()
         
         try {
-            await api.post('/nomerota', {
-                nome: nomeRef.current.value,
-                email: emailRef.current.value,
-                senha: senhaRef.current.value,
-                setor: setorRef.current.value,
-                matricula: matriculaRef.current.value
+            await api.post('/usuario', {
+                "nome": nomeRef.current.value,
+                "email": emailRef.current.value,
+                "senha": senhaRef.current.value,
+                "setor": setorRef.current.value,
+                "matricula": matriculaRef.current.value,
+                "perfil": "CLIENTE"
             })
             alert('usuário cadastrado')
         } catch(error) {
             alert('erro ao cadastrar usuário')
+            console.log(error)
         }
         
     }

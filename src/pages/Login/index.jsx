@@ -12,14 +12,13 @@ function Login(){
     async function handleSubmit(e){
         e.preventDefault()
         try {
-            const {data} = await api.post('/nomedarota',{
-                email: emailRef.current.value,
-                senha: senhaRef.current.value
+            const {data} = await api.post('/auth/login',{
+                "email": emailRef.current.value,
+                "password": senhaRef.current.value
             })
-            const token = data
-            localStorage.setItem('token', token)
-            //const atendente = data.atendente
-            //localStorage.setItem('atendente', atendente)
+            localStorage.setItem('token', data.access_token)
+            localStorage.setItem('id', data.id)
+            localStorage.setItem('perfil', data.perfil)
             navigate('/chamados')
         } catch (error){
             alert('erro ao fazer o login')
