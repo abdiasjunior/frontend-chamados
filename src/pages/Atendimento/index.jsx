@@ -6,18 +6,58 @@ import api from "../../services/api"
 function Atendimento() {
     const [chamado, setChamado] = useState(
         {
-            "id": null,
-            "dataHoraAbertura": null,
-            "assunto": null,
-            "descricao": null,
-            "tipo": null,
-            "dataHoraAtendimento": null,
-            "dataHoraFechamento": null,
-            "status": null,
-            "devolutiva": null,
-            "usuario": {"nome": null},
-            "atendente": null
-        }
+            "id": "",
+            "dataHoraAbertura": "",
+            "assunto": "",
+            "descricao": "",
+            "tipo": "",
+            "dataHoraAtendimento": "",
+            "dataHoraFechamento": "",
+            "status": "",
+            "devolutiva": "",
+            "usuario": {
+              "id": "",
+              "nome": "",
+              "email": "",
+              "senha": "",
+              "matricula": "",
+              "perfil": "",
+              "setor": "",
+              "status": "",
+              "dataCadastro": "",
+              "atendentes": [
+                ""
+              ],
+              "chamados": [
+                ""
+              ]
+            },
+            "atendente": {
+              "id": "",
+              "dataFuncao": "",
+              "status": "",
+              "usuario": {
+                "id": "",
+                "nome": "",
+                "email": "",
+                "senha": "",
+                "matricula": "",
+                "perfil": "",
+                "setor": "",
+                "status": "",
+                "dataCadastro": "",
+                "atendentes": [
+                  ""
+                ],
+                "chamados": [
+                  ""
+                ]
+              },
+              "chamados": [
+                ""
+              ]
+            }
+          }
     )
     const statusRef = useRef()
     const devolutivaRef = useRef()

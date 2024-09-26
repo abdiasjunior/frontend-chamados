@@ -35,7 +35,7 @@ function NovoChamado(){
                     <div className="flex gap-3 max-md:flex-col">
                         <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Assunto" type="text" ref={assuntoRef}/>
                         <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" ref={categoriaRef}>
-                            <option selected disabled>Selecione uma categoria</option>
+                            <option disabled selected>Selecione uma categoria</option>
                             <option value="SOLICITAÇÃO">SOLICITAÇÃO</option>
                             <option value="DÚVIDA">DÚVIDA</option>
                             <option value="RECLAMAÇÃO">RECLAMAÇÃO</option>

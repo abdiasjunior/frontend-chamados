@@ -6,6 +6,7 @@ import api from "../../services/api"
 
 function Chamados(){
     const [chamados, setChamados] = useState()
+    const perfil = localStorage.getItem('perfil')
 
     useEffect(() => {
         buscarChamados()
@@ -25,14 +26,21 @@ function Chamados(){
         }
     }
 
-    function dataAtualFormatada(){
+    function dataAtualFormatada() {
         var data = new Date(),
             dia  = data.getDate().toString(),
             diaF = (dia.length == 1) ? '0'+dia : dia,
-            mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+            mes  = (data.getMonth() + 1).toString(), // +1 pois no getMonth Janeiro começa com zero.
             mesF = (mes.length == 1) ? '0'+mes : mes,
-            anoF = data.getFullYear();
-        return diaF+"/"+mesF+"/"+anoF;
+            anoF = data.getFullYear(),
+            hora = data.getHours().toString(),
+            horaF = (hora.length == 1) ? '0' + hora : hora,
+            min  = data.getMinutes().toString(),
+            minF = (min.length == 1) ? '0' + min : min,
+            seg  = data.getSeconds().toString(),
+            segF = (seg.length == 1) ? '0' + seg : seg;
+    
+        return diaF + "/" + mesF + "/" + anoF + " " + horaF + ":" + minF + ":" + segF;
     }
 
     return (
@@ -52,10 +60,22 @@ function Chamados(){
                                 <p><strong>Categoria: </strong>{chamado.tipo}</p>
                                 <p><strong>Assunto: </strong>{chamado.assunto}</p>
                             </div>
-                            <div className="flex flex-col gap-1 text-center">
+                            <div className="w-1/6 max-md:w-1/4 flex flex-col gap-1 text-center">
                                 <Link to={`/chamado/${chamado.id}`} className="w-full bg-green-600 hover:bg-green-800 rounded-md px-4 text-md text-white">Ver</Link>
-                                <Link to={`/atendimento/${chamado.id}`}  className="w-full bg-blue-600 hover:bg-blue-800 rounded-md px-4 text-md text-white">Atender</Link>
-                                <button onClick={() => excluirChamado(chamado.id)} className="w-full bg-red-600 hover:bg-red-800 rounded-md px-4 text-md text-white">Excluir</button>          
+                                {
+                                    chamado.status == "FINALIZADO" || perfil == "CLIENTE"? (
+                                        ""
+                                    ) : ( 
+                                        <Link to={`/atendimento/${chamado.id}`}  className="w-full bg-blue-600 hover:bg-blue-800 rounded-md px-4 text-md text-white">Atender</Link>
+                                    )
+                                }
+                                {
+                                    perfil == "CLIENTE"? (
+                                        ""
+                                    ) : ( 
+                                        <button onClick={() => excluirChamado(chamado.id)} className="w-full bg-red-600 hover:bg-red-800 rounded-md px-4 text-md text-white">Excluir</button>
+                                    )
+                                }             
                             </div>
                         </div>
                     ))   
