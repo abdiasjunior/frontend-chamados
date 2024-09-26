@@ -36,11 +36,11 @@ function NovoChamado(){
                         <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Assunto" type="text" ref={assuntoRef}/>
                         <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" ref={categoriaRef}>
                             <option selected disabled>Selecione uma categoria</option>
-                            <option value="Solicitação">Solicitação</option>
-                            <option value="Dúvida">Dúvida</option>
-                            <option value="Reclamação">Reclamação</option>
-                            <option value="Informação">Informação</option>
-                            <option value="Sugestão">Sugestão</option>
+                            <option value="SOLICITAÇÃO">SOLICITAÇÃO</option>
+                            <option value="DÚVIDA">DÚVIDA</option>
+                            <option value="RECLAMAÇÃO">RECLAMAÇÃO</option>
+                            <option value="INFORMAÇÃO">INFORMAÇÃO</option>
+                            <option value="SUGESTÃO">SUGESTÃO</option>
                         </select>
                     </div>
                     <textarea className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Descrição" ref={descricaoRef}/>

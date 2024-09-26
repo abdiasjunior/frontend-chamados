@@ -1,21 +1,39 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Header from "../../components/Header"
+import api from "../../services/api"
 
 
 function Chamados(){
-    //const [chamados, setChamados] = useState()
+    const [chamados, setChamados] = useState()
 
-    /*useEffect(() => {
-        async function buscarChamados(){
-            const token = localStorage.getItem('token')
-            const { data } = await api.get('/nomedarota', {
-                headers: {Autorization: `Bearer ${token}`}
-            })
-            setChamados(data.chamados)
-        }
+    useEffect(() => {
         buscarChamados()
-    }, [])*/
+    }, [])
+
+    async function buscarChamados(){
+        const {data} = await api.get('/chamados')
+        setChamados(data)
+    }
+
+    async function excluirChamado(id){
+        try {
+            await api.delete(`/chamados/${id}`)
+            buscarChamados()
+        } catch(error){
+            alert("erro ao excluir o chamado")
+        }
+    }
+
+    function dataAtualFormatada(){
+        var data = new Date(),
+            dia  = data.getDate().toString(),
+            diaF = (dia.length == 1) ? '0'+dia : dia,
+            mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+            mesF = (mes.length == 1) ? '0'+mes : mes,
+            anoF = data.getFullYear();
+        return diaF+"/"+mesF+"/"+anoF;
+    }
 
     return (
         <div className="flex flex-col items-center">
@@ -23,32 +41,25 @@ function Chamados(){
             <div className="w-6/12 max-md:w-10/12 py-5 px-8 rounded-lg bg-gray-800 flex items-center flex-col gap-3">
                 <h1 className="font-bold  text-white text-xl">Chamados realizados</h1>
                 
-                {/*{chamados && chamados.length > 0 && chamados.map( chamado => ())}
-                    usar a key
-                    */}
-                <div className="w-full bg-white p-2 px-4 hover:scale-105 transition-all border-gray-300 rounded-lg shadow-lg flex justify-between items-center gap-2">
-                    <div className="flex flex-col">
-                        <p><strong>ID: </strong>1</p>
-                        <p><strong>Categoria: </strong> Solicitação</p>
-                        <p><strong>Assunto: </strong> Teste do teste do teste do teste</p>
-                    </div>
-                    <div className="flex flex-col gap-1 text-center">
-                        <Link className="w-full bg-blue-600 hover:bg-blue-800 rounded-md px-4 text-md text-white">Atender</Link>
-                        <button className="w-full bg-red-600 hover:bg-red-800 rounded-md px-4 text-md text-white">Excluir</button>
-                    </div>
-                </div>
-                <div className="w-full bg-white p-2 px-4 hover:scale-105 transition-all border-gray-300 rounded-lg shadow-lg flex justify-between items-center gap-2">
-                    <div className="flex flex-col">
-                        <p><strong>ID: </strong>1</p>
-                        <p><strong>Categoria: </strong> Solicitação</p>
-                        <p><strong>Assunto: </strong> Teste do teste do teste do teste</p>
-                    </div>
-                    <div className="flex flex-col gap-1 text-center">
-                        <Link className="w-full bg-blue-600 hover:bg-blue-800 rounded-md px-4 text-md text-white">Atender</Link>
-                        <button className="w-full bg-red-600 hover:bg-red-800 rounded-md px-4 text-md text-white">Excluir</button>
-                    </div>
-                </div>
-
+                {
+                    chamados && chamados.length > 0 && chamados.map( chamado => (
+                        <div className="w-full bg-white p-2 px-4 hover:scale-105 transition-all border-gray-300 rounded-lg shadow-lg flex justify-between items-center gap-2" key={chamado.id}>
+                            <div className="flex flex-col">
+                                <p className="">
+                                    <strong>ID: </strong>{chamado.id}
+                                </p> 
+                                <p><strong>Abertura: </strong>{dataAtualFormatada(chamado.dataHoraAbertura)}</p>
+                                <p><strong>Categoria: </strong>{chamado.tipo}</p>
+                                <p><strong>Assunto: </strong>{chamado.assunto}</p>
+                            </div>
+                            <div className="flex flex-col gap-1 text-center">
+                                <Link to={`/chamado/${chamado.id}`} className="w-full bg-green-600 hover:bg-green-800 rounded-md px-4 text-md text-white">Ver</Link>
+                                <Link to={`/atendimento/${chamado.id}`}  className="w-full bg-blue-600 hover:bg-blue-800 rounded-md px-4 text-md text-white">Atender</Link>
+                                <button onClick={() => excluirChamado(chamado.id)} className="w-full bg-red-600 hover:bg-red-800 rounded-md px-4 text-md text-white">Excluir</button>          
+                            </div>
+                        </div>
+                    ))   
+                }
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import Login from "./pages/Login"
 import NovoChamado from "./pages/NovoChamado"
 import Chamados from "./pages/Chamados"
 import Atendimento from "./pages/Atendimento"
+import Chamado from "./pages/Chamado"
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/cadastro" element={<Cadastro/>}/>
         <Route path="/novochamado" element={<NovoChamado/>}/>
         <Route path="/chamados" element={<Chamados/>}/>
-        <Route path="/chamado/:id" element={<Atendimento/>}/>
+        <Route path="/atendimento/:id" element={<Atendimento/>}/>
+        <Route path="/chamado/:id" element={<Chamado/>}/>
       </Routes>
     </BrowserRouter>
   )
