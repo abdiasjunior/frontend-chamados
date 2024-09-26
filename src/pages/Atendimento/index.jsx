@@ -84,20 +84,27 @@ function Atendimento() {
                 "usuarioId": idUsuario
                 }
             )
-            navigate("/chamados")
+            navigate(`/chamado/${id}`)
         } catch (error) {
             alert('erro ao atualizar o cadastro')
         }
     }
 
-    function dataAtualFormatada(){
+    function dataAtualFormatada() {
         var data = new Date(),
             dia  = data.getDate().toString(),
             diaF = (dia.length == 1) ? '0'+dia : dia,
-            mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+            mes  = (data.getMonth() + 1).toString(), // +1 pois no getMonth Janeiro começa com zero.
             mesF = (mes.length == 1) ? '0'+mes : mes,
-            anoF = data.getFullYear();
-        return diaF+"/"+mesF+"/"+anoF;
+            anoF = data.getFullYear(),
+            hora = data.getHours().toString(),
+            horaF = (hora.length == 1) ? '0' + hora : hora,
+            min  = data.getMinutes().toString(),
+            minF = (min.length == 1) ? '0' + min : min,
+            seg  = data.getSeconds().toString(),
+            segF = (seg.length == 1) ? '0' + seg : seg;
+    
+        return diaF + "/" + mesF + "/" + anoF + " " + horaF + ":" + minF + ":" + segF;
     }
 
     return (
@@ -130,12 +137,12 @@ function Atendimento() {
                     <hr />
                     <p className="font-bold max-md:text-center">Atendimento</p>
 
-                    <select className="w-1/2 max-md:w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" ref={statusRef}>
+                    <select className="w-1/2 max-md:w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" ref={statusRef} required>
                         <option selected disabled>Selecione um status</option>
                         <option value="EM ANDAMENTO">EM ANDAMENTO</option>
-                        <option value="FINALIZADO">FINALIZADO</option>
+                        <option value="CONCLUIDO">CONCLUÍDO</option>
                     </select>
-                    <textarea className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Devolutiva" ref={devolutivaRef} />
+                    <textarea className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Devolutiva" ref={devolutivaRef} required/>
 
 
                     <div className="flex gap-3 justify-end">

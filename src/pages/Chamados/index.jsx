@@ -26,8 +26,8 @@ function Chamados(){
         }
     }
 
-    function dataAtualFormatada() {
-        var data = new Date(),
+    function dataAtualFormatada(d) {
+        var data = new Date(d),
             dia  = data.getDate().toString(),
             diaF = (dia.length == 1) ? '0'+dia : dia,
             mes  = (data.getMonth() + 1).toString(), // +1 pois no getMonth Janeiro começa com zero.
@@ -63,7 +63,7 @@ function Chamados(){
                             <div className="w-1/6 max-md:w-1/4 flex flex-col gap-1 text-center">
                                 <Link to={`/chamado/${chamado.id}`} className="w-full bg-green-600 hover:bg-green-800 rounded-md px-4 text-md text-white">Ver</Link>
                                 {
-                                    chamado.status == "FINALIZADO" || perfil == "CLIENTE"? (
+                                    chamado.status == "CONCLUIDO" || perfil == "CLIENTE"? (
                                         ""
                                     ) : ( 
                                         <Link to={`/atendimento/${chamado.id}`}  className="w-full bg-blue-600 hover:bg-blue-800 rounded-md px-4 text-md text-white">Atender</Link>

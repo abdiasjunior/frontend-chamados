@@ -39,15 +39,15 @@ function Cadastro(){
             </h1>
             <h2 className="text-xl font-bold mb-6 text-center text-gray-800">Cadastro</h2>
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Nome" type="text" ref={nomeRef}/>
+                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Nome" type="text" ref={nomeRef} required/>
 
-                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="E-mail" type="email" ref={emailRef}/>
+                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="E-mail" type="email" ref={emailRef} required/>
 
-                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Matrícula" type="text" ref={matriculaRef}/>
+                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Matrícula" type="text" ref={matriculaRef} required/>
 
-                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Setor" type="text" ref={setorRef}/>
+                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Setor" type="text" ref={setorRef} required/>
 
-                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Senha" type="password" ref={senhaRef}/>
+                <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Senha" type="password" ref={senhaRef} required/>
 
                 <button className="w-full bg-red-600 hover:bg-red-800 text-white font-semibold py-2 px-4 rounded-md">Cadastrar</button>
             </form>

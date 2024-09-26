@@ -5,18 +5,18 @@ import NovoChamado from "./pages/NovoChamado"
 import Chamados from "./pages/Chamados"
 import Atendimento from "./pages/Atendimento"
 import Chamado from "./pages/Chamado"
+import Private from "./Private"
 
 function App() {
   return (
-    //navegação
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login/>}/>
         <Route path="/cadastro" element={<Cadastro/>}/>
-        <Route path="/novochamado" element={<NovoChamado/>}/>
-        <Route path="/chamados" element={<Chamados/>}/>
-        <Route path="/atendimento/:id" element={<Atendimento/>}/>
-        <Route path="/chamado/:id" element={<Chamado/>}/>
+        <Route path="/novochamado" element={<Private><NovoChamado/></Private>}/>
+        <Route path="/chamados" element={<Private><Chamados/></Private>}/>
+        <Route path="/atendimento/:id" element={<Private><Atendimento/></Private>}/>
+        <Route path="/chamado/:id" element={<Private><Chamado/></Private>}/>
       </Routes>
     </BrowserRouter>
   )
