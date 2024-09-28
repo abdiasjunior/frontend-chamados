@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import api from "../../services/api"
 import { SiHelpscout } from "react-icons/si";
+import { toast } from "react-toastify";
 
 
 function Cadastro(){
@@ -10,6 +11,8 @@ function Cadastro(){
     const senhaRef = useRef()
     const setorRef = useRef()
     const matriculaRef = useRef()
+
+    const navigate = useNavigate()
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -23,10 +26,10 @@ function Cadastro(){
                 "matricula": matriculaRef.current.value,
                 "perfil": "CLIENTE"
             })
-            alert('usuário cadastrado')
+            navigate('/')
+            toast.success('Usuário cadastrado')
         } catch(error) {
-            alert('erro ao cadastrar usuário')
-            console.log(error)
+            toast.error(error.response.data.message)
         }
         
     }

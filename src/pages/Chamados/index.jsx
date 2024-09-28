@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Header from "../../components/Header"
 import api from "../../services/api"
+import { toast } from "react-toastify"
 
 function Chamados(){
     const [chamados, setChamados] = useState()
@@ -20,8 +21,9 @@ function Chamados(){
         try {
             await api.delete(`/chamados/${id}`)
             buscarChamados()
+            toast.success('Chamado excluído')
         } catch(error){
-            alert("erro ao excluir o chamado")
+            toast.error(error.response.data.message)
         }
     }
 
@@ -45,7 +47,7 @@ function Chamados(){
     return (
         <div className="flex flex-col items-center">
             <Header/>
-            <div className="w-6/12 max-md:w-10/12 py-5 px-8 rounded-lg bg-gray-800 flex items-center flex-col gap-3">
+            <div className="w-6/12 mt-20 max-md:mt-28 max-md:w-10/12 py-5 px-8 rounded-lg bg-gray-800 flex items-center flex-col gap-3">
                 <h1 className="font-bold  text-white text-xl">Chamados realizados</h1>
                 
                 {

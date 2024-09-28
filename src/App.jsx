@@ -6,9 +6,16 @@ import Chamados from "./pages/Chamados"
 import Atendimento from "./pages/Atendimento"
 import Chamado from "./pages/Chamado"
 import Private from "./Private"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
   return (
+    <>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={4000}
+      />
       <BrowserRouter>
         <Routes>
             <Route path="/" element={<Login/>}/>
@@ -19,6 +26,7 @@ function App() {
             <Route path="/chamado/:id" element={<Private><Chamado/></Private>}/>
         </Routes>
       </BrowserRouter>
+    </>
   )
 }
 export default App

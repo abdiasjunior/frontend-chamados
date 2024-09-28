@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import Header from "../../components/Header"
 import api from "../../services/api"
+import { toast } from "react-toastify"
 
 function NovoChamado(){
     const assuntoRef = useRef()
@@ -20,16 +21,16 @@ function NovoChamado(){
                 "usuarioId": idUsuario
             })
             navigate('/chamados')
+            toast.success('Chamado registrado')
         } catch (error){
-            alert('erro ao criar o chamado')
-            console.log(error)
+            toast.error(error.response.data.message)
         }
     }
 
     return (
         <div className="flex flex-col items-center">
             <Header/>
-            <div className="w-6/12 max-md:w-10/12 mx-auto bg-white p-8 border-gray-300 rounded-lg shadow-lg">
+            <div className="w-6/12 mt-20 max-md:mt-28 max-md:w-10/12 mx-auto bg-white p-8 border-gray-300 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Novo chamado</h2>
                 <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                     <div className="flex gap-3 max-md:flex-col">

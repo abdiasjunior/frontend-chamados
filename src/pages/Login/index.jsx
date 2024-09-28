@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import api from "../../services/api"
 import { SiHelpscout } from "react-icons/si";
+import { toast } from "react-toastify";
 
 function Login(){
     const emailRef = useRef()
@@ -19,8 +20,9 @@ function Login(){
             localStorage.setItem('id', data.id)
             localStorage.setItem('perfil', data.perfil)
             navigate('/chamados')
+            toast.success('Bem-vindo(a) ao sistema')
         } catch (error){
-            alert('erro ao fazer o login')
+            toast.error(error.response.data.message)
         }
     }
 

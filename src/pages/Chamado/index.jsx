@@ -59,10 +59,7 @@ function Chamado() {
             }
         }
     )
-    const statusRef = useRef()
-    const devolutivaRef = useRef()
     const { id } = useParams()
-    const navigate = useNavigate()
     const perfil = localStorage.getItem('perfil')
 
     useEffect(() => {
@@ -94,7 +91,7 @@ function Chamado() {
     return (
         <div className="flex flex-col items-center">
             <Header />
-            <div className="w-6/12 max-md:w-10/12 mx-auto bg-white p-8 border-gray-300 rounded-lg shadow-lg">
+            <div className="w-6/12 mt-20 max-md:mt-28 max-md:w-10/12 mx-auto bg-white p-8 border-gray-300 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Chamado ID {id} - {dataAtualFormatada(chamado.dataHoraAbertura)}</h2>
                 <form className="flex flex-col gap-3">
                     <p className="font-bold max-md:text-center">Abertura</p>

@@ -10,7 +10,7 @@ function Header(){
     }
 
     return (
-        <header className="bg-white w-full flex max-md:flex-col max-md:items-center p-3 mb-5 gap-2 justify-between items-center">
+        <header className="bg-white w-full flex max-md:flex-col max-md:items-center p-3 gap-2 justify-between items-center fixed top-0 left-0 z-50">
             <h1 className="font-bold flex gap-1 justify-center items-center text-2xl max-md:text-3xl">
                 <SiHelpscout className="text-red-600"/>
                 Sistema de chamados

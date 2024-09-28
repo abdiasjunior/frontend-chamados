@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { useRef, useState, useEffect } from "react"
 import Header from "../../components/Header"
 import api from "../../services/api"
+import { toast } from "react-toastify"
 
 function Atendimento() {
     const [chamado, setChamado] = useState(
@@ -85,8 +86,9 @@ function Atendimento() {
                 }
             )
             navigate(`/chamado/${id}`)
+            toast.success('Atendimento registrado')
         } catch (error) {
-            alert('erro ao atualizar o cadastro')
+            toast.error(error.response.data.message)
         }
     }
 
@@ -110,7 +112,7 @@ function Atendimento() {
     return (
         <div className="flex flex-col items-center">
             <Header />
-            <div className="w-6/12 max-md:w-10/12 mx-auto bg-white p-8 border-gray-300 rounded-lg shadow-lg">
+            <div className="w-6/12 mt-20 max-md:mt-28 max-md:w-10/12 mx-auto bg-white p-8 border-gray-300 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Atendimento ao Chamado ID {id} - {dataAtualFormatada(chamado.dataHoraAbertura)}</h2>
                 <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                     <p className="font-bold max-md:text-center">Abertura</p>
