@@ -138,12 +138,10 @@ function Atendimento() {
                     <p className="font-bold max-md:text-center">Atendimento</p>
 
                     <select className="w-1/2 max-md:w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" ref={statusRef} required>
-                        <option selected disabled>Selecione um status</option>
-                        <option value="EM ANDAMENTO">EM ANDAMENTO</option>
+                        <option selected value="EM ANDAMENTO">EM ANDAMENTO</option>
                         <option value="CONCLUIDO">CONCLUÍDO</option>
                     </select>
-                    <textarea className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Devolutiva" ref={devolutivaRef} required/>
-
+                    <textarea className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" placeholder="Devolutiva" ref={devolutivaRef} value={chamado.devolutiva} required/>
 
                     <div className="flex gap-3 justify-end">
                         <Link className="w-1/4 text-black text-center bg-gray-200 hover:bg-gray-300 font-semibold py-2 px-4 rounded-md" to="/chamados">Cancelar</Link>

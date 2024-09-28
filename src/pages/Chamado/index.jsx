@@ -128,9 +128,17 @@ function Chamado() {
                                     <label className="w-full">Atendente
                                         <input disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" value={chamado.atendente.usuario.nome} />
                                     </label>
-                                    <label className="w-full">Data fechamento
-                                        <input disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" value={dataAtualFormatada(chamado.dataHoraFechamento)} />
-                                    </label>
+                                    {
+                                        chamado.status != "EM ANDAMENTO" ? (
+                                            <label className="w-full">Data fechamento
+                                                <input disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" value={dataAtualFormatada(chamado.dataHoraFechamento)} />
+                                            </label>
+                                        ) : (
+                                            <label className="w-full">Data fechamento
+                                                <input disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" type="text" value="Não finalizado" />
+                                            </label>
+                                        )
+                                    }
                                 </div>
                                 <label className="w-full">Devolutiva
                                     <textarea disabled className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" value={chamado.devolutiva} />

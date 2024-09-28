@@ -3,7 +3,6 @@ import { useRef } from "react"
 import api from "../../services/api"
 import { SiHelpscout } from "react-icons/si";
 
-
 function Login(){
     const emailRef = useRef()
     const senhaRef = useRef()
